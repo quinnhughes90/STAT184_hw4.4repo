@@ -1,0 +1,28 @@
+The goal of this project is to study how calcium levels change over four years for two 
+specific groups in this dataset: 15 women in the null group and 16 women in the diet/exercise 
+group. We want to see if the treatment helps slow calcium loss compared to the control group.
+To do this, we will need to load the calcium.csv file into R using read_csv() We will also
+create a unique ID for each woman using mutate(row_number()) so we can track individuals over
+time. 
+
+Next, we will reshape the data from wide format to long format so that each row
+represents one woman at one year. We will split the dataset into two parts
+(null and treatment), use pivot_longer() to convert y0–y3 into a single “year” column,
+and then add a “group” variable to label each observation. After that, we will combine the 
+two datasets using bind_rows(). We will clean the “year” variable using parse_number() so that 
+it becomes 0, 1, 2, or 3 instead of text labels. We will inspect the new dataset to make 
+sure each participant now has four rows (one for each year) and that both groups are correctly 
+labeled. We will also calculate summary statistics like the mean calcium level for each group
+and year using group_by() and summarize() to prepare for visualization.
+
+Finally, we will create visualizations using ggplot() to compare the groups over time.
+First, we will make a line plot of mean calcium levels using geom_line() and geom_point()
+to clearly compare trends between the null and treatment groups. Then, we will create a
+spaghetti plot with geom_line() to show individual changes and check for variability within
+each group, and boxplots with geom_boxplot() to compare distributions at each year. 
+After each plot, we will check if the results make sense (for example, whether both
+groups start at similar baseline levels and whether the treatment group declines more 
+slowly). If something looks off, we will revisit earlier steps and fix the data. This
+plan follows the steps suggested by the AI tool (ChatGPT), which recommended reshaping
+the data with pivot_longer(), labeling groups, and using line plots and summary statistics
+to compare trends over time.
